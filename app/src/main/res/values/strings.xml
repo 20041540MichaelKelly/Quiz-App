@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">Quiz App</string>
-    <string name="crazy_q_s_quiz_app">Crazy Q\'s Quiz App!</string>
+    <string name="coders_title">A Coders Quiz App</string>
     <string name="welcome">Welcome</string>
+    <string name="enter_name_now">Enter Name Now:</string>
+    <string name="e_g_mick">e.g. Mick</string>
+    <string name="submit">Submit</string>
 </resources>
