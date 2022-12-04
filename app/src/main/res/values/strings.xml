@@ -5,4 +5,6 @@
     <string name="enter_name_now">Enter Name Now:</string>
     <string name="e_g_mick">e.g. Mick</string>
     <string name="submit">Submit</string>
+    <string name="please_anwser_the_below_question">Please anwser the below question</string>
+    <string name="js_logo">JS Logo</string>
 </resources>
