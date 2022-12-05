@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/q_bg"
     android:fillViewport="true"
     tools:context=".QuestionsActivity">
 
@@ -12,15 +13,16 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="23dp">
 
         <TextView
+            android:id="@+id/tv_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"
             android:textSize="22sp"
-            android:textColor="#363463"
+            android:textColor="@color/white"
             android:text="@string/please_anwser_the_below_question"/>
 
         <ImageView
@@ -39,28 +41,88 @@
             android:layout_marginTop="16dp">
 
             <ProgressBar
+                android:id="@+id/progressBar"
                 android:layout_width="0dp"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:indeterminate="false"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="@drawable/q_bg"
+                android:layout_margin="10dp"
                 android:max="5"
                 android:minHeight="50dp"
                 android:min="0"/>
 
             <TextView
+                android:id="@+id/tv_prog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textSize="14sp"
+                android:textColor="@color/white"
                 android:padding="15dp"
                 tools:text="0/9" />
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/anwserOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:background="@drawable/default_background"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Apple" />
 
+        <TextView
+            android:id="@+id/anwserTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:background="@drawable/default_background"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Apple" />
 
+        <TextView
+            android:id="@+id/anwserThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_background"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Apple" />
 
+        <TextView
+            android:id="@+id/anwserFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/default_background"
+            android:gravity="center"
+            android:padding="15dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            tools:text="Apple" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@color/purple_500"
+            android:text="@string/submitBt"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
