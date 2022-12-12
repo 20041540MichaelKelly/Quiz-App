@@ -1,11 +1,9 @@
 package mick.projects.quizapp
 
-import android.app.PendingIntent.OnFinished
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -25,10 +23,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var imageView: ImageView?= null
     private var tvQuestion: TextView?= null
 
-    private var answerOne: TextView?= null
-    private var answerTwo: TextView?= null
-    private var answerThree: TextView?= null
-    private var answerFour: TextView?= null
+    private var mAnswerOne: TextView?= null
+    private var mAnswerTwo: TextView?= null
+    private var mAnswerThree: TextView?= null
+    private var mAnswerFour: TextView?= null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,10 +35,10 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         progressBar = findViewById(R.id.progressBar)
         tvProgressBar = findViewById(R.id.tv_prog)
         tvQuestion = findViewById(R.id.tv_question)
-        answerOne = findViewById(R.id.anwserOne)
-        answerTwo = findViewById(R.id.anwserTwo)
-        answerThree = findViewById(R.id.anwserThree)
-        answerFour = findViewById(R.id.anwserFour)
+        mAnswerOne = findViewById(R.id.anwserOne)
+        mAnswerTwo = findViewById(R.id.anwserTwo)
+        mAnswerThree = findViewById(R.id.anwserThree)
+        mAnswerFour = findViewById(R.id.anwserFour)
         mQuestionList = Constants.getQuestions()
 
         setQuestions()
@@ -52,10 +50,20 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         progressBar?.progress = mCurrentPosition
         tvProgressBar?.text = "$mCurrentPosition/ ${progressBar?.max}"
         tvQuestion?.text = question.question
-        answerOne?.text = question.questionOne
-        answerTwo?.text = question.questionTwo
-        answerThree?.text = question.questionThree
-        answerFour?.text = question.questionFour
+        mAnswerOne?.text = question.questionOne
+        mAnswerTwo?.text = question.questionTwo
+        mAnswerThree?.text = question.questionThree
+        mAnswerFour?.text = question.questionFour
+
+        mAnswerOne?.setOnClickListener(this)
+
+        mAnswerTwo?.setOnClickListener(this)
+
+        mAnswerThree?.setOnClickListener(this)
+
+        mAnswerFour?.setOnClickListener(this)
+
+        mSubmitButton?.setOnClickListener(this)
 
         if(mCurrentPosition == mQuestionList!!.size) {
             mSubmitButton?.text = "FINISH"
@@ -68,28 +76,94 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private fun defaultOptionsView() {
         val options = ArrayList<TextView>()
 
-        answerOne?.let {
+        mAnswerOne?.let {
             options.add(0, it)
         }
-        answerTwo?.let {
+        mAnswerTwo?.let {
             options.add(1, it)
         }
-        answerThree?.let {
+        mAnswerThree?.let {
             options.add(2, it)
         }
-        answerFour?.let {
+        mAnswerFour?.let {
             options.add(3, it)
         }
 
         for(option in options) {
-            option.setTextColor(Color.parseColor("#476234f"))
+            option.setTextColor(Color.parseColor("#7AB20a"))
             option.typeface = Typeface.DEFAULT
-            option.background = ContextCompat.getDrawable(this, R.drawable.default_background)
+            option.background = ContextCompat.getDrawable(this, R.drawable.selected_background)
         }
 
     }
 
-    override fun onClick(p0: View?) {
-        TODO("Not yet implemented")
+    private fun selectedFunOptionsView(textView: TextView, selectedOptionNumber: Int) {
+        defaultOptionsView()
+
+        mSelectedQuestion = selectedOptionNumber
+
+        textView.setTextColor(Color.parseColor("#363A43"))
+        textView.setTypeface(textView.typeface, Typeface.BOLD)
+        textView.background = ContextCompat.getDrawable(this, R.drawable.default_background)
+
+
+    }
+
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.anwserOne -> {
+                mAnswerOne?.let {
+                    selectedFunOptionsView(it, 1)
+                }
+            }
+            R.id.anwserTwo -> {
+               mAnswerOne?.let {
+                   selectedFunOptionsView(it, 2)
+
+               }
+            }R.id.anwserThree -> {
+               mAnswerThree?.let {
+                   selectedFunOptionsView(it, 3)
+
+               }
+            }R.id.anwserFour -> {
+               mAnswerFour?.let {
+                   selectedFunOptionsView(it, 4)
+
+               }
+            }R.id.submitButton -> {
+               mSubmitButton?.let {
+                    if(mSelectedQuestion == 0) {
+                        mCurrentPosition++
+
+                        when{
+                            mCurrentPosition <= mQuestionList!!.size -> {
+                                setQuestions()
+                            }
+                        }
+                    }else{
+                        val question = mQuestionList?.get(mCurrentPosition - 1)
+                        if(question!!.correctAns != mSelectedQuestion) {
+                            answerView(mSelectedQuestion, R.drawable.wrong_ans)
+                        }
+                        answerView(mSelectedQuestion, R.drawable.correct_ans)
+                    }
+               }
+            }
+        }
+    }
+
+    private fun answerView(answer: Int, drawableView: Int) {
+         when(answer) {
+             1 -> {
+                 mAnswerOne?.background = ContextCompat.getDrawable(this, drawableView)
+             }2 -> {
+                 mAnswerTwo?.background = ContextCompat.getDrawable(this, drawableView)
+             }3 -> {
+                 mAnswerThree?.background = ContextCompat.getDrawable(this, drawableView)
+             }4 -> {
+                 mAnswerFour?.background = ContextCompat.getDrawable(this, drawableView)
+             }
+         }
     }
 }
