@@ -1,14 +1,12 @@
 package mick.projects.quizapp
 
+import android.app.ProgressDialog.show
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import androidx.core.content.ContextCompat
 
 class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
@@ -39,6 +37,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         mAnswerTwo = findViewById(R.id.anwserTwo)
         mAnswerThree = findViewById(R.id.anwserThree)
         mAnswerFour = findViewById(R.id.anwserFour)
+        mSubmitButton = findViewById(R.id.submitButton)
         mQuestionList = Constants.getQuestions()
 
         setQuestions()
@@ -92,7 +91,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         for(option in options) {
             option.setTextColor(Color.parseColor("#7AB20a"))
             option.typeface = Typeface.DEFAULT
-            option.background = ContextCompat.getDrawable(this, R.drawable.selected_background)
+            option.background = ContextCompat.getDrawable(this, R.drawable.default_background)
         }
 
     }
@@ -104,34 +103,36 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         textView.setTextColor(Color.parseColor("#363A43"))
         textView.setTypeface(textView.typeface, Typeface.BOLD)
-        textView.background = ContextCompat.getDrawable(this, R.drawable.default_background)
-
-
+        textView.background = ContextCompat.getDrawable(this, R.drawable.selected_background)
     }
 
     override fun onClick(view: View?) {
         when(view?.id) {
             R.id.anwserOne -> {
                 mAnswerOne?.let {
-                    selectedFunOptionsView(it, 1)
+                    selectedFunOptionsView(it, 0)
                 }
             }
             R.id.anwserTwo -> {
-               mAnswerOne?.let {
-                   selectedFunOptionsView(it, 2)
+                mAnswerTwo?.let {
+                    selectedFunOptionsView(it, 1)
 
-               }
-            }R.id.anwserThree -> {
-               mAnswerThree?.let {
-                   selectedFunOptionsView(it, 3)
+                }
+            }
+            R.id.anwserThree -> {
+                mAnswerThree?.let {
+                    selectedFunOptionsView(it, 2)
 
-               }
-            }R.id.anwserFour -> {
-               mAnswerFour?.let {
-                   selectedFunOptionsView(it, 4)
+                }
+            }
+            R.id.anwserFour -> {
+                mAnswerFour?.let {
+                    selectedFunOptionsView(it, 3)
 
-               }
-            }R.id.submitButton -> {
+                }
+            }
+
+            R.id.submitButton -> {
                mSubmitButton?.let {
                     if(mSelectedQuestion == 0) {
                         mCurrentPosition++
@@ -140,6 +141,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             mCurrentPosition <= mQuestionList!!.size -> {
                                 setQuestions()
                             }
+                            else -> {
+                                Toast.makeText(this, "Congrats!! you are now an elite programmer", Toast.LENGTH_LONG).show()
+                            }
                         }
                     }else{
                         val question = mQuestionList?.get(mCurrentPosition - 1)
@@ -147,6 +151,12 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                             answerView(mSelectedQuestion, R.drawable.wrong_ans)
                         }
                         answerView(mSelectedQuestion, R.drawable.correct_ans)
+
+                        if(mCurrentPosition == mQuestionList!!.size) {
+                            mSubmitButton?.text = "FINISH"
+                        }else{
+                            mSubmitButton?.text = "GO TO THE NEXT QUESTION"
+                        }
                     }
                }
             }
