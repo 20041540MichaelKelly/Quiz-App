@@ -45,6 +45,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun setQuestions() {
+        defaultOptionsView()
         val question: Question = mQuestionList!![mCurrentPosition -1]
         progressBar?.progress = mCurrentPosition
         tvProgressBar?.text = "$mCurrentPosition/ ${progressBar?.max}"
@@ -89,7 +90,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         for(option in options) {
-            option.setTextColor(Color.parseColor("#7AB20a"))
+            option.setTextColor(Color.parseColor("#000000"))
             option.typeface = Typeface.DEFAULT
             option.background = ContextCompat.getDrawable(this, R.drawable.default_background)
         }
@@ -97,7 +98,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun selectedFunOptionsView(textView: TextView, selectedOptionNumber: Int) {
-        defaultOptionsView()
+       // defaultOptionsView()
 
         mSelectedQuestion = selectedOptionNumber
 
@@ -110,24 +111,24 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         when(view?.id) {
             R.id.anwserOne -> {
                 mAnswerOne?.let {
-                    selectedFunOptionsView(it, 0)
+                    selectedFunOptionsView(it, 1)
                 }
             }
             R.id.anwserTwo -> {
                 mAnswerTwo?.let {
-                    selectedFunOptionsView(it, 1)
+                    selectedFunOptionsView(it, 2)
 
                 }
             }
             R.id.anwserThree -> {
                 mAnswerThree?.let {
-                    selectedFunOptionsView(it, 2)
+                    selectedFunOptionsView(it, 3)
 
                 }
             }
             R.id.anwserFour -> {
                 mAnswerFour?.let {
-                    selectedFunOptionsView(it, 3)
+                    selectedFunOptionsView(it, 4)
 
                 }
             }
@@ -150,13 +151,15 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         if(question!!.correctAns != mSelectedQuestion) {
                             answerView(mSelectedQuestion, R.drawable.wrong_ans)
                         }
-                        answerView(mSelectedQuestion, R.drawable.correct_ans)
+                        answerView(question.correctAns, R.drawable.correct_ans)
 
                         if(mCurrentPosition == mQuestionList!!.size) {
                             mSubmitButton?.text = "FINISH"
                         }else{
                             mSubmitButton?.text = "GO TO THE NEXT QUESTION"
                         }
+
+                        mSelectedQuestion = 0
                     }
                }
             }
@@ -167,11 +170,14 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
          when(answer) {
              1 -> {
                  mAnswerOne?.background = ContextCompat.getDrawable(this, drawableView)
-             }2 -> {
+             }
+             2 -> {
                  mAnswerTwo?.background = ContextCompat.getDrawable(this, drawableView)
-             }3 -> {
+             }
+             3 -> {
                  mAnswerThree?.background = ContextCompat.getDrawable(this, drawableView)
-             }4 -> {
+             }
+             4 -> {
                  mAnswerFour?.background = ContextCompat.getDrawable(this, drawableView)
              }
          }

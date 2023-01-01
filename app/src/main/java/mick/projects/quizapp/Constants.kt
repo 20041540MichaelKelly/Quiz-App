@@ -21,11 +21,11 @@ object Constants {
 
         questionList.add(que2)
 
-        val que3 = Question(3, "What is ‘this’ keyword in JavaScript?",
-            R.drawable.js_logo, "‘This’ keyword refers to the class from where it was called",
-            "‘This’ keyword refers to the object from where it was called",
-            "‘This’ keyword refers to the function from where it was called",
-            "‘This’ keyword refers to the value from where it was called", 1)
+        val que3 = Question(3, "What do ‘this’ keyword refer from where it was called in JavaScript?",
+            R.drawable.js_logo, "Refers to the class",
+            "Refers to the object",
+            "Refers to the function",
+            "Refers to the value", 1)
 
         questionList.add(que3)
 
