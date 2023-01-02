@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "***Error: Name not Included***", Toast.LENGTH_LONG).show()
             }else{
                 val intent = Intent(this, QuestionsActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, etName.text.toString())
                 startActivity(intent)
                 finish()
             }

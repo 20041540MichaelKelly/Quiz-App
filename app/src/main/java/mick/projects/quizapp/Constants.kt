@@ -1,6 +1,9 @@
 package mick.projects.quizapp
 
 object Constants {
+    const val USER_NAME: String = "user_name"
+    const val TOTAL_QUESTIONS: String = "total_questions"
+    const val CORRECT_ANSWERS: String = "correct_answers"
 
     fun getQuestions(): ArrayList<Question> {
         val questionList = ArrayList<Question>()
@@ -14,10 +17,10 @@ object Constants {
         questionList.add(que1)
 
         val que2 = Question(2, "What is the isNaN function used for?",
-        R.drawable.js_logo, "isNan function returns true if the argument is not a number",
-                    "isNan function returns false if the argument is not a number",
-                    "returns an inbuilt exception",
-                    "isNaN is not a function", 0)
+        R.drawable.js_logo, "Returns true if the argument is not a number",
+                    "Returns false if the argument is not a number",
+                    "Returns an inbuilt exception",
+                    "isNaN is not a function", 1)
 
         questionList.add(que2)
 
@@ -25,23 +28,23 @@ object Constants {
             R.drawable.js_logo, "Refers to the class",
             "Refers to the object",
             "Refers to the function",
-            "Refers to the value", 1)
+            "Refers to the value", 2)
 
         questionList.add(que3)
 
-        val que4 = Question(4, "What are JavaScript Data Types? no.4",
-            R.drawable.js_logo, "Number",
-            "String",
-            "var",
-            "Undefined", 3)
+        val que4 = Question(4, "How NOT to empty an Array called arrayList? no.4",
+            R.drawable.js_logo, "arrayList = [];",
+            "arrayList.length = 0;",
+            "arrayList.splice(0, arrayList.length);",
+            "arrayList.empty();", 4)
 
         questionList.add(que4)
 
-        val que5 = Question(5, "What are JavaScript Data Types? no.5",
-            R.drawable.js_logo, "Number",
-            "String",
-            "var",
-            "Undefined", 3)
+        val que5 = Question(5, "Javascript is an _______ language? no.5",
+            R.drawable.js_logo, "Object-Oriented",
+            "Object-Based",
+            "Procedural",
+            "None of the above", 1)
 
         questionList.add(que5)
 

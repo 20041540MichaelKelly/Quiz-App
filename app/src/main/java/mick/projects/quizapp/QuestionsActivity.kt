@@ -1,6 +1,7 @@
 package mick.projects.quizapp
 
 import android.app.ProgressDialog.show
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +16,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mSelectedQuestion: Int = 0
 
     private var mSubmitButton: Button? = null
+
+    private var mUserName: String? = null
+    private var mCorrectAnswers: Int = 0
 
     private var progressBar: ProgressBar?= null
     private var tvProgressBar: TextView?= null
@@ -33,6 +37,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         progressBar = findViewById(R.id.progressBar)
         tvProgressBar = findViewById(R.id.tv_prog)
         tvQuestion = findViewById(R.id.tv_question)
+        mUserName = intent.getStringExtra(Constants.USER_NAME)
         mAnswerOne = findViewById(R.id.anwserOne)
         mAnswerTwo = findViewById(R.id.anwserTwo)
         mAnswerThree = findViewById(R.id.anwserThree)
@@ -137,19 +142,25 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                mSubmitButton?.let {
                     if(mSelectedQuestion == 0) {
                         mCurrentPosition++
-
                         when{
                             mCurrentPosition <= mQuestionList!!.size -> {
                                 setQuestions()
                             }
                             else -> {
-                                Toast.makeText(this, "Congrats!! you are now an elite programmer", Toast.LENGTH_LONG).show()
+                                val intent = Intent(this, ResultActivity::class.java)
+                                intent.putExtra(Constants.USER_NAME, mUserName)
+                                intent.putExtra(Constants.CORRECT_ANSWERS, mCorrectAnswers)
+                                intent.putExtra(Constants.TOTAL_QUESTIONS, mQuestionList?.size)
+                                startActivity(intent)
+                                finish()
                             }
                         }
                     }else{
                         val question = mQuestionList?.get(mCurrentPosition - 1)
                         if(question!!.correctAns != mSelectedQuestion) {
                             answerView(mSelectedQuestion, R.drawable.wrong_ans)
+                        }else{
+                            mCorrectAnswers++
                         }
                         answerView(question.correctAns, R.drawable.correct_ans)
 
