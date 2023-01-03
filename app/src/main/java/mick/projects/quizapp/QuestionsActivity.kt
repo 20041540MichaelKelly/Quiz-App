@@ -1,14 +1,17 @@
 package mick.projects.quizapp
 
-import android.app.ProgressDialog.show
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+
 
 class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mCurrentPosition: Int = 1
@@ -113,29 +116,45 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View?) {
+        val textViews = ArrayList<TextView>()
         when(view?.id) {
             R.id.anwserOne -> {
                 mAnswerOne?.let {
                     selectedFunOptionsView(it, 1)
                 }
+                mAnswerTwo?.let { textViews.add(it) }
+                mAnswerThree?.let { textViews.add(it) }
+                mAnswerFour?.let { textViews.add(it) }
+                markButtonDisable(textViews)
             }
             R.id.anwserTwo -> {
                 mAnswerTwo?.let {
                     selectedFunOptionsView(it, 2)
-
                 }
+                mAnswerOne?.let { textViews.add(it) }
+                mAnswerThree?.let { textViews.add(it) }
+                mAnswerFour?.let { textViews.add(it) }
+                markButtonDisable(textViews)
             }
             R.id.anwserThree -> {
                 mAnswerThree?.let {
                     selectedFunOptionsView(it, 3)
 
                 }
+                mAnswerTwo?.let { textViews.add(it) }
+                mAnswerOne?.let { textViews.add(it) }
+                mAnswerFour?.let { textViews.add(it) }
+                markButtonDisable(textViews)
             }
             R.id.anwserFour -> {
                 mAnswerFour?.let {
                     selectedFunOptionsView(it, 4)
 
                 }
+                mAnswerTwo?.let { textViews.add(it) }
+                mAnswerThree?.let { textViews.add(it) }
+                mAnswerOne?.let { textViews.add(it) }
+                markButtonDisable(textViews)
             }
 
             R.id.submitButton -> {
@@ -192,5 +211,13 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                  mAnswerFour?.background = ContextCompat.getDrawable(this, drawableView)
              }
          }
+    }
+
+    private fun markButtonDisable(buttons: ArrayList<TextView>) {
+        for(button in buttons) {
+            button.isEnabled = false
+            button.setTextColor(ContextCompat.getColor(this, R.color.white))
+            button.setBackgroundColor(ContextCompat.getColor(this, R.color.teal_200))
+        }
     }
 }
