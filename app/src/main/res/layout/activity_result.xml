@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/iv_trophy"
-        android:layout_width="243dp"
-        android:layout_height="350dp"
+        android:layout_width="201dp"
+        android:layout_height="257dp"
         android:src="@drawable/ic_trophy" />
 
     <TextView
