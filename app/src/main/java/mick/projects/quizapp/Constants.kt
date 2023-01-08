@@ -32,7 +32,7 @@ object Constants {
 
         questionList.add(que3)
 
-        val que4 = Question(4, "How NOT to empty an Array called arrayList? no.4",
+        val que4 = Question(4, "How NOT to empty an Array called arrayList? ",
             R.drawable.js_logo, "arrayList = [];",
             "arrayList.length = 0;",
             "arrayList.splice(0, arrayList.length);",
@@ -96,39 +96,41 @@ object Constants {
 
         questionList.add(que11)
 
+        val que12 = Question(12, "Upon encountering empty statements, what does the Javascript Interpreter do? ",
+            R.drawable.js_logo, "Throws an error",
+            "Ignore the statements",
+            "Gives a warning",
+            "None of the above", 2)
+
+        questionList.add(que12)
+
+
+
+        val que13 = Question(13, "Which of the following methods can be used to display data in some form using Javascript? ",
+            R.drawable.js_logo, "document.write()",
+            "console.log()",
+            "window.alert()",
+            "All of the above", 4)
+
+        questionList.add(que13)
+
+        val que14 = Question(14, "How can a datatype be declared to be a constant type? ",
+            R.drawable.js_logo, "const",
+            "var",
+            "let",
+            "constant", 1)
+
+        questionList.add(que14)
+
+        val que15 = Question(15, "What keyword is used to check whether a given property is valid or not? ",
+            R.drawable.js_logo, "in",
+            "is in",
+            "exists",
+            "lies", 1)
+
+        questionList.add(que15)
+
         /*val que6 = Question(6, "Which of the keyword is used to define the variable in the javascript? ",
-            R.drawable.js_logo, "var",
-            "let",
-            "Both of the above",
-            "None of the above", 3)
-
-        questionList.add(que6)
-
-        val que6 = Question(6, "Which of the keyword is used to define the variable in the javascript? ",
-            R.drawable.js_logo, "var",
-            "let",
-            "Both of the above",
-            "None of the above", 3)
-
-        questionList.add(que6)
-
-        val que6 = Question(6, "Which of the keyword is used to define the variable in the javascript? ",
-            R.drawable.js_logo, "var",
-            "let",
-            "Both of the above",
-            "None of the above", 3)
-
-        questionList.add(que6)
-
-        val que6 = Question(6, "Which of the keyword is used to define the variable in the javascript? ",
-            R.drawable.js_logo, "var",
-            "let",
-            "Both of the above",
-            "None of the above", 3)
-
-        questionList.add(que6)
-
-        val que6 = Question(6, "Which of the keyword is used to define the variable in the javascript? ",
             R.drawable.js_logo, "var",
             "let",
             "Both of the above",

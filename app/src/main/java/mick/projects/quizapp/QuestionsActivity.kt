@@ -2,6 +2,7 @@ package mick.projects.quizapp
 
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.BLACK
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
@@ -56,7 +57,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         defaultOptionsView()
         val question: Question = mQuestionList!![mCurrentPosition -1]
         progressBar?.progress = mCurrentPosition
-        tvProgressBar?.text = "$mCurrentPosition/ ${progressBar?.max}"
+        tvProgressBar?.text = "$mCurrentPosition/ ${mQuestionList!!.size}"
         tvQuestion?.text = question.question
         mAnswerOne?.text = question.questionOne
         mAnswerTwo?.text = question.questionTwo
@@ -82,6 +83,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun defaultOptionsView() {
+        enableButtons()
         val options = ArrayList<TextView>()
 
         mAnswerOne?.let {
@@ -106,8 +108,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun selectedFunOptionsView(textView: TextView, selectedOptionNumber: Int) {
-       // defaultOptionsView()
-
         mSelectedQuestion = selectedOptionNumber
 
         textView.setTextColor(Color.parseColor("#363A43"))
@@ -188,7 +188,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         }else{
                             mSubmitButton?.text = "GO TO THE NEXT QUESTION"
                         }
-
                         mSelectedQuestion = 0
                     }
                }
@@ -216,8 +215,13 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private fun markButtonDisable(buttons: ArrayList<TextView>) {
         for(button in buttons) {
             button.isEnabled = false
-            button.setTextColor(ContextCompat.getColor(this, R.color.white))
-            button.setBackgroundColor(ContextCompat.getColor(this, R.color.teal_200))
         }
+    }
+
+    private fun enableButtons() {
+        mAnswerOne?.isEnabled = true
+        mAnswerTwo?.isEnabled = true
+        mAnswerThree?.isEnabled = true
+        mAnswerFour?.isEnabled = true
     }
 }

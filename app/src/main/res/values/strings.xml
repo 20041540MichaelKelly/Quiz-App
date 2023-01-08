@@ -8,4 +8,7 @@
     <string name="please_anwser_the_below_question">Please anwser the below question</string>
     <string name="js_logo">JS Logo</string>
     <string name="submitBt">SUBMIT</string>
+    <string name="less_than_or_equal_three">COME ON! YOU CAN DO BETTER!!</string>
+    <string name="less_than_or_equal_seven">A LITTLE MORE WORK NEEDED</string>
+    <string name="victory">CONGRATULATIONS!! YOU ARE AWESOME!!!</string>
 </resources>
