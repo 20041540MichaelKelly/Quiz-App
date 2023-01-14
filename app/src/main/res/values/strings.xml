@@ -5,10 +5,18 @@
     <string name="enter_name_now">Enter Name Now:</string>
     <string name="e_g_mick">e.g. Mick</string>
     <string name="submit">Submit</string>
-    <string name="please_anwser_the_below_question">Please anwser the below question</string>
+    <string name="please_anwser_the_below_question">Please answer the below question</string>
     <string name="js_logo">JS Logo</string>
     <string name="submitBt">SUBMIT</string>
     <string name="less_than_or_equal_three">COME ON! YOU CAN DO BETTER!!</string>
     <string name="less_than_or_equal_seven">A LITTLE MORE WORK NEEDED</string>
     <string name="victory">CONGRATULATIONS!! YOU ARE AWESOME!!!</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- -
+        This is an ad unit ID for an interstitial test ad. Replace with your own interstitial ad unit id.
+        For more information, see https://support.google.com/admob/answer/3052638
+    <!- -->
+    <string name="interstitial_ad_unit_id">ca-app-pub-8221778775483224/4894267284</string>
 </resources>

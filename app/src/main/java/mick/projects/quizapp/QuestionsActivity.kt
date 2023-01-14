@@ -2,7 +2,6 @@ package mick.projects.quizapp
 
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Color.BLACK
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
